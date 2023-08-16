@@ -97,6 +97,10 @@ npm init vite@latest
 npx create-vite-app@5 my-app --template react
 ```
 
-```
+-   Install Quokka.js extension for VSCode runtime evaluation
 
+-   Async
+
+```js
+// https://jsonplaceholder.typicode.com/todos/1
 ```
