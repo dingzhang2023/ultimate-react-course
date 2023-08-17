@@ -6,6 +6,20 @@ const messages = [
 	'Invest your new income 🤑',
 ];
 
+const Button = ({ textColor, bgColor, onClick, children }) => {
+	return (
+		<button
+			style={{
+				backgroundColor: bgColor,
+				color: textColor,
+			}}
+			onClick={onClick}
+		>
+			{children}
+		</button>
+	);
+};
+
 const App = () => {
 	// class attributes and method, state + setState to update the state
 	// once the state is updated, the component will re-render
@@ -21,7 +35,7 @@ const App = () => {
 	};
 
 	return (
-		<>
+		<div>
 			<button className="close" onClick={() => setIsOpen((is) => !is)}>
 				&times;
 			</button>
@@ -39,28 +53,24 @@ const App = () => {
 					</p>
 
 					<div className="buttons">
-						<button
-							style={{
-								backgroundColor: '#7950f2',
-								color: '#fff',
-							}}
+						<Button
+							bgColor="#7950f2"
+							textColor="#fff"
 							onClick={handlePrevious}
 						>
-							Previous
-						</button>
-						<button
-							style={{
-								backgroundColor: '#7950f2',
-								color: '#fff',
-							}}
+							<span>👈</span>Previous
+						</Button>
+						<Button
+							bgColor="#7950f2"
+							textColor="#fff"
 							onClick={handleNext}
 						>
-							Next
-						</button>
+							Next<span>👉</span>
+						</Button>
 					</div>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 

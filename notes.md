@@ -144,6 +144,41 @@ npx create-vite-app@5 my-app --template react
     > UI as a function of state UI = f(state)
     > Declarative, view UI as a reflection of data changing over time, using state, event handlers, and JSX
 -   Guidline for state
+
     > Use a variable for any data of which the component tracking.
     > Hook a state with a state variable.
     > Use event handler to update the state using call back function.
+
+-   State vs Props
+
+    > State is internal data, owned by component, Props is external data, passed to component and owned by parent component, similar to function arguments
+    > State is componenty memory, Props is component's configuration, read only
+    > State can be updated by the component itself, and updating state causes component to re-render. Props cannot be updated by the component itself, and recieving new props causes component to re-render. Usually when the parent's state has been updated.
+    > Used to make components interactive, used to pass data to components
+
+-   Thinking in React
+    > 1. Break the UI into a components and establish the component tree
+    > 2. Build a static version in React(without state)
+    > 3. Think about state:
+        - When to use state
+        - Types of state: local vs. global (component and children vs redux)
+        - Where to place each piece of state
+        - When and where to populate state, always start with local state
+-   **Props.children**
+
+    > 1. props.children is a special prop that is passed to components automatically
+    > 2. props.children is the content between the opening and closing tags of a component
+    > 3. children prop allow us to pass JSX into an element besides regular props
+    > 4. Essential tool to make reusable and configurable components(especially component content)
+    > 5. Really useful for generic components that dont know their content before being used(modal)
+
+-   How to Split a UI into Components
+    > 1. logical seperation of content/layout
+    > 2. reusability
+    > 3. Single responsibility principle with low coupling and complexity
+    > 4. Personal coding style
+    > 5. **Don't overdo it** Start with a big component then split it into smaller components as it become necessary
+    > 6. too many props too many pieces of state too many things together
+    > 7. Name a component according to **what it does** or **what it displays**. Don't be afraid to using long component names
+    > 8. Never declare a new component inside a component, always declare it outside and import it
+    > 9. **Co-locate components inside the same file**. Dont sperate components into different files too early.
