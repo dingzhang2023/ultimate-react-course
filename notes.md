@@ -104,3 +104,29 @@ npx create-vite-app@5 my-app --template react
 ```js
 // https://jsonplaceholder.typicode.com/todos/1
 ```
+
+-   Props
+
+    > Enable pass params to a component to control its appearance and behavior, like function arguments.
+    > default type is string, can be any type. e.g. {10} as number, {true} as boolean, {[]} as array, {{}} as object
+    > one way data flow, **parent -> children**
+
+-   JSX
+    {}表示是 JS 的地盘，需要解析
+
+-   List rendering
+    map() function, key prop, 都是传整个对象
+
+-   Conditional rendering
+    **&&, ? :**
+
+    ```jsx
+    {
+    	isCompleted && <span>Completed</span>;
+    }
+    {
+    	isCompleted ? <span>Completed</span> : null;
+    }
+    ```
+
+-   State and event
