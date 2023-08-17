@@ -130,3 +130,20 @@ npx create-vite-app@5 my-app --template react
     ```
 
 -   State and event
+    > install Color Highlight extension for VSCode
+    > **State** is the most important concept in React and involves the component's life cycle.
+    > **State** is data that changes over time, **component's memory**, component state.
+    > Updating component state triggers React to re-render the component
+        ```javascript
+        const [state, setState] = useState() hook
+        		<!-- 使用函数更新state，永远会更新 -->
+        		<button className="close" onClick={() => setIsOpen((is) => !is)}>&times;</button>
+        ```
+-   More thoughts on state
+    > one component, one state, components are indepenendently
+    > UI as a function of state UI = f(state)
+    > Declarative, view UI as a reflection of data changing over time, using state, event handlers, and JSX
+-   Guidline for state
+    > Use a variable for any data of which the component tracking.
+    > Hook a state with a state variable.
+    > Use event handler to update the state using call back function.
