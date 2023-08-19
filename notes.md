@@ -173,6 +173,7 @@ npx create-vite-app@5 my-app --template react
     > 5. Really useful for generic components that dont know their content before being used(modal)
 
 -   How to Split a UI into Components
+
     > 1. logical seperation of content/layout
     > 2. reusability
     > 3. Single responsibility principle with low coupling and complexity
@@ -182,3 +183,14 @@ npx create-vite-app@5 my-app --template react
     > 7. Name a component according to **what it does** or **what it displays**. Don't be afraid to using long component names
     > 8. Never declare a new component inside a component, always declare it outside and import it
     > 9. **Co-locate components inside the same file**. Dont sperate components into different files too early.
+
+-   Props as an API
+
+    > Props related to flexibility and reusability, need to find a balance between flexibility and complexity
+
+-   Props validation
+
+    > 1. PropTypes is a built-in library for validating props
+    > 2. Typescript can get this job done, if you use it
+
+-
