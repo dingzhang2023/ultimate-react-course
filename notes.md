@@ -391,3 +391,17 @@ npx create-vite-app@5 my-app --template react
     	return [data, loading];
     };
     ```
+
+-   useReducer hook
+    > WHY? state management with useState is not enough in certain situations, such as 1. components have **a lot of variables and state updates**, spread across many event handlers **all over the component**. 2. when multiple state updates need to happen **at the same time** (as a reaction to the same event, like "starting a game") 3. State has a lot of dependenices of states.
+    > An alternative way of setting state, ideal for **complex state** and **related pieces of state**
+    > Stores realted pieces of state in a **single state object**
+    > useReducer needs **reducer**: function containing **all logic to update state. Decouples state logic from component logic**. Similar to Redux reducer.
+    > reducer function must be pure function, no side effects.
+    ```javascript
+    const [state, dispatch] = useReducer(reducer, initialState);
+    ```
+-   dispatcher, reducer, state
+    > dispatcher: **who requests the update**
+    > reducer: **how to update the state**, middle man, **pure function**, all the logic to update state
+    > state: **what is the current state**
