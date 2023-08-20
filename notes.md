@@ -320,6 +320,7 @@ npx create-vite-app@5 my-app --template react
     ```
 
 -   useEffect **Dependency Array**
+
     > -   By default, effects run after every render. We can prevent that by passing a dependency array.
     > -   Without the dependency array, React doesn't know when to run the effect.
     > -   Each time one of the dependencies changes, the effect is re-run.
@@ -329,5 +330,64 @@ npx create-vite-app@5 my-app --template react
     > -   useEffect(fn, [x, y, z]) => fn is executed when x, y, or z changes
     > -   useEffect(fn, []) => fn is executed only once, after the initial render(mount)
     > -   useEffect(fn) => fn is executed after every render > useEffect will be executed **after the commit phase**, so it's safe to perform DOM mutations in useEffect.
-    > -   cleanup function, before useEffect is executed again, the cleanup function is executed first. After a component has unmounted. Necessary whenever the side effect keeps **happening after the component has been re-render or unmounted**. For example, timers, api subscriptions, and event listeners, http requests.
+    > -   cleanup function, before useEffect is executed again, the cleanup function is executed first. After a component has unmounted. Necessary whenever the side effect keeps **happening after the component has been re-render or unmounted**. For example, timers, api subscriptions, and **event listeners**, http requests.
     > -   Each useEffect does **one thing**.
+
+-   Special built-in functions that allow us to **"hook" into React internals**
+
+    > -   Creating and accessing **state** from Fiber tree, such as useState, useReducer, useContext
+    > -   Registering **side effects** to be executed after the commit phase, such as useEffect
+    > -   Most used hooks: useState, useEffect, useReducer, useContext
+    > -   Less used hooks: useRef, useCallback, useMemo, useTransition, useDeferredValue
+
+-   The Rules of hooks
+
+    > -   **Only call hooks at the top level**, dont call hooks inside loops, conditions, or nested functions, or after an early return. The reason is that its necessary to ensure hooks are always called in the **same order**.
+    > -   **Only call hooks from React functions** or a **custom hooks**
+
+-   Hooks rely on **CALL ORDER**
+
+    > -   Hooks are called in the same order every time a component renders. Its related to fiber tree, which is a linked list. React uses the fiber tree to keep track of the order of hooks.
+
+-   Summary of defining and updating state
+
+    > 1. creating state:
+    >
+    > -   simple: `const[cnt, setCnt] = useState(0)`
+    > -   based on lazy func: `const[cnt, setCnt] = useState(() => localStorage.getItem('cnt'))`, function must be pure and accept no args. Called only initial render.
+    >
+    > 2. updating state:
+    >
+    > -   simple: `setCnt(1)`
+    > -   based on current state: `setCnt((c) => c + 1)`, function must be pure and return next state. for array or object, use spread operator to copy the state, then update the state. In other word, create new array or object.
+
+-   useRef
+
+    > 1. Selecting and storing DOM nodes
+    > 2. Storing mutable values across renders, e.g. previous state, setTimeout id, etc.
+    > 3. Refs are for data that is not rendered: usually only appear in event handlers and effects.
+
+-   **Rusing Logic** with custom hooks
+
+    > Allow us to reuse **non-visual logic** in multiple components.
+    > One custom hook should have **one purpose**, to make it **reusable and portable**(even across multiple projects).
+    > Custom hooks needs to use one or more hooks inside it. Unlike components, hooks can receive and return **any relevant data(usually [] or {})**
+
+    ```javascript
+    useFectch = (url) => {
+    	const [data, setData] = useState([]);
+    	const [loading, setLoading] = useState(false);
+
+    	useEffect(() => {
+    		const fetchData = async () => {
+    			setLoading(true);
+    			const res = await fetch(url);
+    			const data = await res.json();
+    			setData(data);
+    			setLoading(false);
+    		};
+    		fecchData();
+    	});
+    	return [data, loading];
+    };
+    ```
